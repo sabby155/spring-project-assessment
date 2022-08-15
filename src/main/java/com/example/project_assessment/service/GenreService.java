@@ -26,15 +26,6 @@ public class GenreService {
     @Autowired
     private ModelMapper modelMapper;
 
-//    List<Genre> genreList = new ArrayList<>();
-//    public List<Genre> create(List<String> genreStrings) {
-//        genreStrings.forEach(genreString -> {
-//            Genre genre = new Genre();
-//            genre.setName(genreString);
-//            genreList.add(genre);
-//        });
-//        return genreList;
-//    }
 
     public List<GenreResponseDTO> getAll() {
         return repository.findAll().stream().map(genre -> modelMapper.map(genre, GenreResponseDTO.class)).toList();

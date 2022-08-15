@@ -53,10 +53,11 @@ public class BookService {
     }
 
 
+    //POST CREATE JSON - For new book
 //    {
 //        "title": "Newest Book Title",
 //        "pages": 100,
-//        "genres": ["genre", "anotherGenre", "anotherSuperMegaGenre"],
+//        "genres": ["genre", "anotherGenre", "anotherPopularGenre"],
 //        "author": "Author Name",
 //        "published": "2022-05-10"
 //    }

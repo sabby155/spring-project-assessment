@@ -31,12 +31,5 @@ public class AuthorService {
         }
     }
 
-//    public Author getAuthor(CreateAuthorDTO createAuthorDTO) {
-//        //Check for existing authors
-//        Author author = new Author();
-//        author.setName(createAuthorDTO.name);
-//        log.info(String.valueOf(createAuthorDTO));
-//        return author;
-//    }
 
 }

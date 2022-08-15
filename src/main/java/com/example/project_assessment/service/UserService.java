@@ -28,11 +28,20 @@ public class UserService {
 
 
 
+    //POST CREATE JSON - For new user
+//    {
+//        "username": "user1",
+//        "password": "123"
+//    }
     public UserResponseDTO create(CreateUserDTO createUserDTO) {
         User user = modelMapper.map(createUserDTO, User.class);
         return modelMapper.map(repository.save(user), UserResponseDTO.class);
     }
 
+    //POST CREATE JSON - For new user reading list by ID
+//    {
+//        "name": "New reading list"
+//    }
     public ReadingListDTO createUserReadingListByID(CreateReadingListDTO createReadingListDTO, int id) {
 
         User user = repository.findById(id).orElseThrow(() -> new NotFoundException("User not found"));
