@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -34,7 +33,6 @@ public class UserService {
         return modelMapper.map(repository.save(user), UserResponseDTO.class);
     }
 
-    //Need to come back to this
     public ReadingListDTO createUserReadingListByID(CreateReadingListDTO createReadingListDTO, int id) {
 
         User user = repository.findById(id).orElseThrow(() -> new NotFoundException("User not found"));
@@ -82,10 +80,10 @@ public class UserService {
     // Come back to this
     public ReadingListDTO getUserReadingListByListID(int userID, int listID) {
         User user = repository.findById(userID).orElseThrow(() -> new NotFoundException("User Not Found"));
-
-        return (ReadingListDTO) readingListRepository.findByUser(user).stream()
-                .filter(readingList -> readingList.getId() == listID)
-                .map(readingList -> modelMapper.map(readingList, ReadingListDTO.class));
+        List<ReadingList> readingLists = readingListRepository.findByUser(user).stream()
+                .filter(list -> list.getId() == listID).toList();
+                ReadingList readingList = readingLists.get(0);
+                return modelMapper.map(readingList, ReadingListDTO.class);
     }
 
 
